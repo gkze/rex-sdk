@@ -170,8 +170,8 @@ importers:
   .:
     dependencies:
       effect:
-        specifier: 4.1.0
-        version: 4.1.0
+        specifier: 4.1.5
+        version: 4.1.5
       ws:
         specifier: ^8.22.0
         version: 8.22.0
@@ -183,14 +183,14 @@ importers:
         specifier: 1.6.0
         version: 1.6.0(@aws-sdk/credential-provider-node@3.972.98)(@smithy/signature-v4@5.7.5)(google-auth-library@10.9.1)(ws@8.22.0)
       '@effect/ai-openai':
-        specifier: 4.1.0
-        version: 4.1.0(effect@4.1.0)
+        specifier: 4.1.5
+        version: 4.1.5(effect@4.1.5)
       '@effect/ai-typesafe':
-        specifier: 4.1.0
-        version: 4.1.0(effect@4.1.0)
+        specifier: 4.1.5
+        version: 4.1.5(effect@4.1.5)
       '@effect/platform-node':
-        specifier: 4.1.0
-        version: 4.1.0(effect@4.1.0)(redis@6.3.0)
+        specifier: 4.1.5
+        version: 4.1.5(effect@4.1.5)(redis@6.3.0)
       '@types/node':
         specifier: ^26.6.5
         version: 26.6.5
@@ -202,7 +202,7 @@ importers:
         version: 8.20.0
       traits:
         specifier: ^0.5.14
-        version: 0.5.14(@effect/platform-node@4.1.0(effect@4.1.0)(redis@6.3.0))(@libsql/client@0.18.0)(effect@4.1.0)(typebox@1.3.27)
+        version: 0.5.14(@effect/platform-node@4.1.5(effect@4.1.5)(redis@6.3.0))(@libsql/client@0.18.0)(effect@4.1.5)(typebox@1.3.27)
       typebox:
         specifier: 1.3.27
         version: 1.3.27
@@ -359,28 +359,28 @@ packages:
     resolution: {integrity: sha512-nVtWZ4rYr3KHDla3skGAWG5XoITEUJCoEx1AsWv1yKxV7+v86ulD2hxVn/P+COI6jsoeQmj3orqHbCHZwAUsUg==}
     engines: {node: '>=22.19.0'}
 
-  '@effect/ai-openai@4.1.0':
-    resolution: {integrity: sha512-nliaAiyda83NE76Xd8CcHglYy9c0cLxm4iMK+maOODodarFIdVjWeGf8imps0svjd6/G14BAGhHBOOs+gSo7bw==}
+  '@effect/ai-openai@4.1.5':
+    resolution: {integrity: sha512-JucWxv+12K5cV71oMaU0XT97HJLQC4xSbZwT1BEWsT6AX6y2t9jL3LuzNUhczffypifs4RUUtpx9sIzjiAhYbw==}
     peerDependencies:
-      effect: ^4.1.0
+      effect: ^4.1.5
 
-  '@effect/ai-typesafe@4.1.0':
-    resolution: {integrity: sha512-NX1Q6yxTiONMv87B5Feip/lvd0HEMnK9cRhka6DUrRKs9YCD8WkCuUp50Plm7WC2s1h5mtFdPtJWqIavqxPJOQ==}
+  '@effect/ai-typesafe@4.1.5':
+    resolution: {integrity: sha512-QvCGWIssDkd/de101yh2WSJ41lKFWzsV8AMs2fwZEAKXTfH0298LaWcPnmQdQJcU3mggcJScLVsRVk5wt26uNQ==}
     peerDependencies:
-      effect: ^4.1.0
+      effect: ^4.1.5
 
-  '@effect/platform-node-shared@4.1.0':
-    resolution: {integrity: sha512-uYQfFRoxWLo8fIhiSeBcmz/R1ooOfE3HF3cWHFgxz82tZMk2Wn02BGABcdLmaAch9VpDLbtWnuhSxNyBsGMUFg==}
+  '@effect/platform-node-shared@4.1.5':
+    resolution: {integrity: sha512-JzlrYe4uKaBFTWihBRXo2pDjkUVB39kQpKdGfXdbp7Co5sKT8hbcjOmdB5pg/WOYESdGTddd3fxD4lwlZELbZQ==}
     engines: {node: '>=22.19.0'}
     peerDependencies:
-      effect: ^4.1.0
+      effect: ^4.1.5
 
-  '@effect/platform-node@4.1.0':
-    resolution: {integrity: sha512-v+X7moGVF9k5oMVvz0slA+NgtEod+W+oygeI285MDJgSlUCW3JcqElj+cD3rlijFZtpKhC7RLkU1GuCxjGHTpA==}
+  '@effect/platform-node@4.1.5':
+    resolution: {integrity: sha512-tFnRvxF9EKc3oU17sDHj1JeLP+TL/IkaOEl3IUk2EjgMS0x7AWs0ioUXjdNKLb3Z1LdjVfMf/DxsNh9PW5FFAg==}
     engines: {node: '>=22.19.0'}
     peerDependencies:
-      effect: ^4.1.0
-      redis: '>=5.0.0 <7.0.0'
+      effect: ^4.1.5
+      redis: '>=5.1.0 <7.0.0'
 
   '@effect/sql-libsql@4.1.0':
     resolution: {integrity: sha512-mr5b0rDgNmczFEC00Vgr6a+nGkoq1XWcvCMdeqPaq55Ienm0KO8cEppxYWF691D7V2TJW+XLtV6sgm1fktKlaQ==}
@@ -1642,8 +1642,8 @@ packages:
   ecdsa-sig-formatter@1.0.11:
     resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
 
-  effect@4.1.0:
-    resolution: {integrity: sha512-lGx2MJJyrXA8RZb2UpQ/0Nkb5Utaimby7oD92+18noBxLPE85IFOvptdzau8dvcxAOwfwHo9iqapbKeFzqQM/Q==}
+  effect@4.1.5:
+    resolution: {integrity: sha512-xyR20KhQI0vg2gD8ILUSQRTTESEYJ0JKdP+QD8J37xbwPTqXRxFM/l0+vUVD9fuSvoYruoTqyt33C4FZv1s4TQ==}
 
   es-module-lexer@2.3.2:
     resolution: {integrity: sha512-poHGpORABojJJucnV9KbOavETW8lBVnphkW77ER5/BQ5Fz7oXSoCNek7IH3vR5nRjdsEz926ibFYX8KtLQmdyw==}
@@ -2136,10 +2136,6 @@ packages:
   undici-types@8.9.0:
     resolution: {integrity: sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==}
 
-  undici@8.12.3:
-    resolution: {integrity: sha512-+fdndUTwBP86cVjihTp21hZHo7d6oj1c/47XPA3lL8mM0XHs+C4EkcjmgRsFnFk2f/UONGDy9ItBItmXsLOQHw==}
-    engines: {node: '>=22.19.0'}
-
   undici@8.12.4:
     resolution: {integrity: sha512-8Mx+uNKKER2bA4AdtedkqRbwUCIJFr2nJckXRe5yrDqzePqwLP7VNcctN8/XdmDSbF7mS+jJKIszlL+vbam1VA==}
     engines: {node: '>=22.19.0'}
@@ -2227,6 +2223,18 @@ packages:
       utf-8-validate:
         optional: true
 
+  ws@8.23.0:
+    resolution: {integrity: sha512-wCkmX8QMOrKjgO8HW2WyDbTSGeqkocxgDzS9iR79rEAexty6/2qzilx3Ag8Tqf9ykop3irLKle0MtVn5qjVnoQ==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
   yaml@2.9.0:
     resolution: {integrity: sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==}
     engines: {node: '>= 14.6'}
@@ -2240,10 +2248,12 @@ packages:
   yuku-core@0.19.0:
     resolution: {integrity: sha512-kYK9e1XdfirNhkipzW0wmMcSWcVF/CWnuugodfVYRCUwvoBefweL9HzB96OiKEhsx78V5WbUxbJqlizMX869Qg==}
     engines: {node: '>=14.18.0'}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
   yuku-parser@0.19.0:
     resolution: {integrity: sha512-XrBh9ZiQK5mJVRxZBAvD6LwRyAYrK3MFtH3+onyuxFL5hFD44EC3QOmIC1FjTj6H2MMwq46/NAI+NZxLZPZgxg==}
     engines: {node: '>=14.18.0'}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
 snapshots:
 
@@ -2547,37 +2557,37 @@ snapshots:
       marked: 18.0.11
       marked-cjk-friendly: 0.1.2(marked@18.0.11)
 
-  '@effect/ai-openai@4.1.0(effect@4.1.0)':
+  '@effect/ai-openai@4.1.5(effect@4.1.5)':
     dependencies:
-      effect: 4.1.0
+      effect: 4.1.5
 
-  '@effect/ai-typesafe@4.1.0(effect@4.1.0)':
+  '@effect/ai-typesafe@4.1.5(effect@4.1.5)':
     dependencies:
-      effect: 4.1.0
+      effect: 4.1.5
 
-  '@effect/platform-node-shared@4.1.0(effect@4.1.0)':
+  '@effect/platform-node-shared@4.1.5(effect@4.1.5)':
     dependencies:
       '@types/ws': 8.18.2
-      effect: 4.1.0
-      ws: 8.22.0
+      effect: 4.1.5
+      ws: 8.23.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node@4.1.0(effect@4.1.0)(redis@6.3.0)':
+  '@effect/platform-node@4.1.5(effect@4.1.5)(redis@6.3.0)':
     dependencies:
-      '@effect/platform-node-shared': 4.1.0(effect@4.1.0)
-      effect: 4.1.0
+      '@effect/platform-node-shared': 4.1.5(effect@4.1.5)
+      effect: 4.1.5
       redis: 6.3.0
-      undici: 8.12.3
+      undici: 8.12.4
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/sql-libsql@4.1.0(effect@4.1.0)':
+  '@effect/sql-libsql@4.1.0(effect@4.1.5)':
     dependencies:
       '@libsql/client': 0.18.0
-      effect: 4.1.0
+      effect: 4.1.5
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -3286,18 +3296,18 @@ snapshots:
       get-tsconfig: 4.14.3
       jiti: 2.7.0
 
-  drizzle-orm@1.0.0-rc.5-ab785fc(@effect/sql-libsql@4.1.0(effect@4.1.0))(@libsql/client@0.18.0)(effect@4.1.0)(typebox@1.3.27):
+  drizzle-orm@1.0.0-rc.5-ab785fc(@effect/sql-libsql@4.1.0(effect@4.1.5))(@libsql/client@0.18.0)(effect@4.1.5)(typebox@1.3.27):
     optionalDependencies:
-      '@effect/sql-libsql': 4.1.0(effect@4.1.0)
+      '@effect/sql-libsql': 4.1.0(effect@4.1.5)
       '@libsql/client': 0.18.0
-      effect: 4.1.0
+      effect: 4.1.5
       typebox: 1.3.27
 
   ecdsa-sig-formatter@1.0.11:
     dependencies:
       safe-buffer: 5.2.1
 
-  effect@4.1.0: {}
+  effect@4.1.5: {}
 
   es-module-lexer@2.3.2: {}
 
@@ -3753,13 +3763,13 @@ snapshots:
 
   totalist@3.0.1: {}
 
-  traits@0.5.14(@effect/platform-node@4.1.0(effect@4.1.0)(redis@6.3.0))(@libsql/client@0.18.0)(effect@4.1.0)(typebox@1.3.27):
+  traits@0.5.14(@effect/platform-node@4.1.5(effect@4.1.5)(redis@6.3.0))(@libsql/client@0.18.0)(effect@4.1.5)(typebox@1.3.27):
     dependencies:
-      '@effect/platform-node': 4.1.0(effect@4.1.0)(redis@6.3.0)
-      '@effect/sql-libsql': 4.1.0(effect@4.1.0)
+      '@effect/platform-node': 4.1.5(effect@4.1.5)(redis@6.3.0)
+      '@effect/sql-libsql': 4.1.0(effect@4.1.5)
       drizzle-kit: 1.0.0-rc.5-ab785fc
-      drizzle-orm: 1.0.0-rc.5-ab785fc(@effect/sql-libsql@4.1.0(effect@4.1.0))(@libsql/client@0.18.0)(effect@4.1.0)(typebox@1.3.27)
-      effect: 4.1.0
+      drizzle-orm: 1.0.0-rc.5-ab785fc(@effect/sql-libsql@4.1.0(effect@4.1.5))(@libsql/client@0.18.0)(effect@4.1.5)(typebox@1.3.27)
+      effect: 4.1.5
       yaml: 2.9.1
     transitivePeerDependencies:
       - '@aws-sdk/client-rds-data'
@@ -3841,8 +3851,6 @@ snapshots:
       '@typescript/typescript-win32-x64': 7.0.2
 
   undici-types@8.9.0: {}
-
-  undici@8.12.3: {}
 
   undici@8.12.4: {}
 
@@ -3939,6 +3947,8 @@ snapshots:
   why-is-node-running@3.2.1: {}
 
   ws@8.22.0: {}
+
+  ws@8.23.0: {}
 
   yaml@2.9.0: {}
 
