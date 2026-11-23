@@ -7,7 +7,9 @@ export default defineConfig({
   pack: {
     entry: ["src/index.ts"],
     dts: true,
-    exports: true,
+    // A git dependency never builds dist/, so Bun resolves the "bun" condition to the source;
+    // publishConfig keeps the built exports for a published package.
+    exports: { devExports: "bun" },
   },
   fmt: {
     // Server snapshots stay byte-identical; generated code is owned by its generator.

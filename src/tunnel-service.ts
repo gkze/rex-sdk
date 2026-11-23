@@ -435,7 +435,10 @@ export const makeTunnelService = Effect.gen(function* () {
         input.listen?.host ?? defaultForwardHost,
         input.listen?.port ?? 0,
         (socket: Socket) => {
-          if (target === undefined) return socket.resetAndDestroy();
+          if (target === undefined) {
+            socket.resetAndDestroy();
+            return;
+          }
           const through = target;
           run(
             Effect.scoped(

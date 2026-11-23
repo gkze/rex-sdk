@@ -35,6 +35,9 @@ See [examples/project-workspace.ts](examples/project-workspace.ts) for a fuller 
   `RexUnsupportedApiRevision` on any other.
 - Verified against Rex `0.1.0-preview.22`.
 - Node.js 22.18 or newer; `effect` 4.1.
+- Bun resolves the package's `bun` export condition to the TypeScript source, so a git
+  dependency works without a build. Add `"customConditions": ["bun"]` to the consumer's
+  `tsconfig.json` so TypeScript resolves it the same way.
 
 ## Rex terms
 
