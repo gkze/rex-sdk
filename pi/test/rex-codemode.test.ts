@@ -183,6 +183,7 @@ function handleEverything(server: IRexTestServer) {
     server.handle(method, () => Effect.succeed(concrete(example)));
   }
   server.handle("block.method", () => Effect.succeed({ generation: 1 }));
+  server.handle("focus_history.reverse", () => Effect.succeed({ reversed: false }));
   server.handle("session.attach", () =>
     Effect.succeed({
       client_id: `client:${uuid}`,

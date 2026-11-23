@@ -1,8 +1,8 @@
 # Rex SDK architecture
 
 `rex-sdk` is an Effect-native TypeScript SDK for the Rex server's control API. It targets **Rex
-API revision 18** only (`rex.control.v1`, `rex.data.terminal.v1`), verified against Rex
-`0.1.0-preview.21`. It follows the shape of `../herdr-sdk`: a yieldable aggregate of
+API revision 19** only (`rex.control.v1`, `rex.data.terminal.v1`), verified against Rex
+`0.1.0-preview.22`. It follows the shape of `../herdr-sdk`: a yieldable aggregate of
 namespace services over shared, scoped infrastructure.
 
 ## Sources of truth
@@ -11,7 +11,7 @@ namespace services over shared, scoped infrastructure.
 | -------------------------------------- | ---------------------------------------------------------------------- | --------------------------------- |
 | `schema/rex-api.json`                  | `GET /api/help`: every method's input and output JSON Schema           | `vp run fetch:rex-api`            |
 | `schema/rex-block-creators.json`       | `block_creator.list`: flavor options and block event schemas           | `vp run fetch:rex-api`            |
-| `docs/research/rex-api-revision-18.md` | `GET /llms.txt`: the protocol guide and event reference                | `vp run fetch:rex-api`            |
+| `docs/research/rex-api-revision-19.md` | `GET /llms.txt`: the protocol guide and event reference                | `vp run fetch:rex-api`            |
 | `schema/rex-events.json`               | Server and session event schemas, transcribed from the event reference | hand-written                      |
 | `src/generated/rex-wire-schemas.ts`    | Effect Schema codecs for all of the above                              | `vp run generate`                 |
 | `docs/research/rex-data-bytes-v1.md`   | Observed `rex.data.bytes.v1` contract; Rex doesn't document it         | hand-written; recheck on upgrades |
@@ -62,8 +62,8 @@ namespace. Each service also exports `make*`, `*LayerWithoutDependencies`, and `
   with `createConnection`, because `ws+unix:` URLs can't hold paths with spaces (macOS
   `Application Support`). Messages under 1 KiB are never compressed, so the hello and its
   reconnect token never are.
-- Opens lazily on first use. Sends `hello` with `api_revision` and `api_min_revision` 18 and
-  requires a `welcome` with protocol `rex.control.v1` and revision 18, otherwise it fails with
+- Opens lazily on first use. Sends `hello` with `api_revision` and `api_min_revision` 19 and
+  requires a `welcome` with protocol `rex.control.v1` and revision 19, otherwise it fails with
   `RexHandshakeError` or `RexUnsupportedApiRevision`.
 - Requests are correlated by `id`; responses may arrive in any order. Server error codes map to
   one tagged error each (`RexSessionNotFound`, `RexConflict`, …; unknown codes become

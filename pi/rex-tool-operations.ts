@@ -794,6 +794,12 @@ export const rexToolOperations: readonly RexToolOperation[] = [
     run: (rex, input, options) => rex.blocks.focusPrevious(input, options),
   }),
   method({
+    name: "blocks_focusBack",
+    method: "focus_history.reverse",
+    description: "Step focus back through the focus changes this client made.",
+    run: (rex, input, options) => rex.blocks.focusBack(input, options),
+  }),
+  method({
     name: "blocks_resize",
     method: "session.resize_pane",
     description: "Move the border between two blocks to change their sizes.",

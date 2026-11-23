@@ -41,7 +41,7 @@ const versionResult = (rexVersion: string) => ({
   commit: "0000000",
   built_at: "2026-10-26T20:48:00Z",
   dirty: false,
-  api_revision: 18,
+  api_revision: 19,
 });
 
 const exitTag = <A, E extends { readonly _tag: string }>(exit: Exit.Exit<A, E>) =>
@@ -50,20 +50,20 @@ const exitTag = <A, E extends { readonly _tag: string }>(exit: Exit.Exit<A, E>) 
     : ["Success"];
 
 describe("RexControl", () => {
-  test("says hello with API revision 18 and the configured identity", () =>
+  test("says hello with API revision 19 and the configured identity", () =>
     runControlTest((server) =>
       Effect.gen(function* () {
         const control = yield* RexControl;
         const info = yield* control.connection;
-        expect(info.apiRevision).toBe(18);
+        expect(info.apiRevision).toBe(19);
         expect(info.generation).toBe(1);
         expect(
           String(info.clientId.pipe((option) => (option._tag === "Some" ? option.value : ""))),
         ).toBe("client:test-1");
         expect(server.connections()[0]?.hello).toEqual({
           type: "hello",
-          api_revision: 18,
-          api_min_revision: 18,
+          api_revision: 19,
+          api_min_revision: 19,
           client: { kind: "agent", name: "rex-sdk-test", version: "0.0.0" },
         });
       }),

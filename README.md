@@ -31,9 +31,9 @@ See [examples/project-workspace.ts](examples/project-workspace.ts) for a fuller 
 
 ## Compatibility
 
-- Rex API revision **18** only. The SDK checks the revision in the handshake and fails with
+- Rex API revision **19** only. The SDK checks the revision in the handshake and fails with
   `RexUnsupportedApiRevision` on any other.
-- Verified against Rex `0.1.0-preview.21`.
+- Verified against Rex `0.1.0-preview.22`.
 - Node.js 22.18 or newer; `effect` 4.1.
 
 ## Rex terms
@@ -127,7 +127,7 @@ Each failure is a tagged error, so you can recover with `Effect.catchTag`:
   `RexConnectionLost` means the request may have run. The SDK never resends it; check the state
   first.
 - **Streams**: `RexEventsLost`, `RexDataRejected`, `RexBlockClosed`, `RexDataStreamFailed`.
-- **Contract**: `RexInvalidResponse`, when the server's answer doesn't match API revision 18.
+- **Contract**: `RexInvalidResponse`, when the server's answer doesn't match API revision 19.
 
 ## pi extension
 

@@ -1,6 +1,6 @@
 {
-  "$comment": "Hand-transcribed from the Event Reference in docs/research/rex-api-revision-18.md (API revision 18). The server publishes no JSON Schema for these events.",
-  "api_revision": 18,
+  "$comment": "Hand-transcribed from the Event Reference in docs/research/rex-api-revision-19.md (API revision 19). The server publishes no JSON Schema for these events.",
+  "api_revision": 19,
   "$defs": {
     "principal": {
       "type": "object",

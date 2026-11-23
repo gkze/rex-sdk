@@ -19,7 +19,7 @@ import { RexConfigurationError } from "./rex-errors.ts";
  * @category constants
  * @since 0.1.0
  */
-export const REX_API_REVISION = 18;
+export const REX_API_REVISION = 19;
 
 /**
  * Where the Rex server listens: a Unix socket (or Windows named pipe) path, or a URL.

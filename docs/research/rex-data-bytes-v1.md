@@ -1,8 +1,11 @@
 # `rex.data.bytes.v1` (observed contract)
 
-Rex's protocol guide (`rex-api-revision-18.md`) names this subprotocol but never defines it. This
+Rex's protocol guide (`rex-api-revision-19.md`) names this subprotocol but never defines it. This
 page is assembled from three sources and is **evidence, not a server snapshot**: recheck it on
 every Rex upgrade.
+
+Rechecked against Rex `0.1.0-preview.22` (API 19): the guide's text about this subprotocol is
+unchanged from revision 18, and the live suite's download, paste, and forward tests pass.
 
 | Source                                                                                                                       | Covers                                                                    |
 | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |

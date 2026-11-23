@@ -6,13 +6,13 @@ An Effect-native TypeScript SDK for the [Rex](https://www.superlogical.com/rex/d
 the Rex counterpart to `../herdr-sdk`: one yieldable `RexSdk` aggregate of namespace services
 (`server`, `sessions`, `windows`, `blocks`, `layers`, `terminals`, `tunnels`, `clients`,
 `events`, `targets`, `hosts`, `creators`) over one shared control connection. It targets **Rex
-API revision 18** only.
+API revision 19** only.
 
 ## Start here
 
 - Read [architecture](docs/architecture.md) for layers, decisions, and the verification map.
 - The wire contract is the server snapshots in [schema/](schema/) and the protocol guide in
-  [docs/research/rex-api-revision-18.md](docs/research/rex-api-revision-18.md). They are
+  [docs/research/rex-api-revision-19.md](docs/research/rex-api-revision-19.md). They are
   authoritative over guesses or the public docs.
 - Apply [coding standards](docs/coding-standards.md) and [error guidance](docs/errors.md).
 - For an established pattern (service/Layer shape, schema boundaries, spans, fixtures), read

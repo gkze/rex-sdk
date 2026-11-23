@@ -431,7 +431,7 @@ export function startRexTestServer(options: RexTestServerOptions = {}) {
               ws.close(options.closeAfterHello.code, options.closeAfterHello.reason);
               return;
             }
-            const apiRevision = options.apiRevision ?? 18;
+            const apiRevision = options.apiRevision ?? 19;
             ws.send(
               JSON.stringify({
                 type: "welcome",

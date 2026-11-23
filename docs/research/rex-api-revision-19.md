@@ -8,7 +8,7 @@ Clients, such as Rex.app and the `rex` CLI, connect to the server to show and co
 
 This page documents the API that every client uses, so that you can write your own client, script,
 or tool. The server you fetched it from builds it from its own API, so it always matches that
-server's version. It describes API revision 18.
+server's version. It describes API revision 19.
 
 ## How Rex Is Organized
 
@@ -94,6 +94,7 @@ each one in full.
 - `client.set_label`: Set or remove this client's label.
 - `client.set_script`: Load Lua scripts for this client, replacing any it loaded before.
 - `data.connect`: Get a one-time ticket for opening a data connection to a block. A data connection streams a block's content as it changes, such as a terminal's output.
+- `focus_history.reverse`: Step back through the focus changes the calling principal made.
 - `help.all`: Describe every method the server provides, including block methods.
 - `hosts.list`: List the server's hosts: the other Rex servers you connect to by label.
 - `hosts.put`: Add a host to the server's host list, or replace the host with the same ID.
@@ -209,7 +210,7 @@ Within 5 seconds of opening the WebSocket, send a hello:
 ```json
 {
   "type": "hello",
-  "api_revision": 18,
+  "api_revision": 19,
   "client": {"kind": "cli", "name": "my-tool", "version": "0.1.0"}
 }
 ```
@@ -271,14 +272,14 @@ section "When the Server Closes the Connection" lists the reasons.
 ### API Revisions
 
 Each change to what clients and servers send each other, such as a new field, method, or event,
-gets a new API revision, one higher than the last. This page describes API revision 18.
-This server speaks API revisions 0 through 18. When a client
+gets a new API revision, one higher than the last. This page describes API revision 19.
+This server speaks API revisions 0 through 19. When a client
 uses an older revision, the server translates every message to and from that revision's shapes, so
 an older client keeps working with a newer server.
 
 Send the API revision your client was written for in `api_revision`. A client that leaves it out
 uses revision 0. To receive messages
-in the shapes this page shows, send 18.
+in the shapes this page shows, send 19.
 
 Send the oldest revision your client can use in `api_min_revision`. Leaving it out means 0, which
 tells the server that your client can use every revision from 0 through `api_revision`. The server
@@ -342,7 +343,7 @@ than their requests. Wait for a response before you send a request that depends 
 
 Some methods are different. The server runs them one at a time, in the order they arrive on the
 connection, so that keys and the changes bound to them happen in the order they were typed. Each
-one waits for the one before it to finish. These methods run in order: `block.close`, `block.event`, `client.action`, `client.key`, `session.close_layer`, `session.close_window`, `session.detach_block`, `session.disown_block`, `session.float_block`, `session.focus_block`, `session.focus_direction`, `session.focus_next_pane`, `session.focus_next_window`, `session.focus_previous_pane`, `session.focus_previous_window`, `session.focus_window`, `session.move_block`, `session.move_window`, `session.new_layer`, `session.new_split`, `session.new_window`, `session.own_block`, `session.set_layer_state`, `session.swap_blocks`, `session.zoom_block`.
+one waits for the one before it to finish. These methods run in order: `block.close`, `block.event`, `client.action`, `client.key`, `focus_history.reverse`, `session.close_layer`, `session.close_window`, `session.detach_block`, `session.disown_block`, `session.float_block`, `session.focus_block`, `session.focus_direction`, `session.focus_next_pane`, `session.focus_next_window`, `session.focus_previous_pane`, `session.focus_previous_window`, `session.focus_window`, `session.move_block`, `session.move_window`, `session.new_layer`, `session.new_split`, `session.new_window`, `session.own_block`, `session.set_layer_state`, `session.swap_blocks`, `session.zoom_block`.
 
 Every other method can run at any time, alongside the ordered ones. That includes every block
 method, such as `com.superlogical.terminal.write`. To type text in two calls, wait for the first
@@ -505,9 +506,12 @@ This server allows 1,048,576 bytes (1 MiB), and every server allows at least
 
 - A result that would be larger, such as the text of a very large terminal screen, fails with
   `too_large`. The connection stays open.
-- A request that is larger closes the connection with status 1009.
-- An event that would be larger closes the connection with status 1009 and the reason
-  `event exceeds message limit`, because skipping it would leave a gap in `seq`.
+- A request that is larger closes the connection with status 1009. Check the size before sending,
+  and fail only that request. Write a large request in fragments, so that pings and pongs can go
+  out while it is on its way.
+- An event that would be larger is replaced by an `event_dropped` event with the same `seq`, so
+  there is no gap. The connection stays open. A connection at an API revision without
+  `event_dropped` gets nothing in its place.
 
 ### Staying Connected
 
@@ -2059,6 +2063,29 @@ Example result:
 }
 ```
 
+### `focus_history.reverse`
+
+Step back through the focus changes the calling principal made.
+
+This method runs in order with the other ordered methods on its connection. See "Order of
+Requests" above.
+
+Arguments:
+
+- `session_id` (string): Only go back to a block in this session. The client must be attached to it.
+- `not_session_id` (string): Only go back to a block in another session than this one.
+- `window_id` (string): Only go back to a block in this window.
+- `not_window_id` (string): Only go back to a block in another window than this one.
+- `cursor` (integer): The cursor from an earlier result, to keep stepping back from where that call stopped. Leave it out to start from where focus is now.
+
+Result:
+
+- `reversed` (boolean, required): Whether the call moved focus. False means no place the request allows was left to go back to, and the other fields are left out.
+- `cursor` (integer): Pass this as cursor in the next call to keep stepping back.
+- `session_id` (string): The session that holds the block focus moved to. It may not be the session the client is showing.
+- `window_id` (string): The window that holds the block focus moved to. It is that session's active window.
+- `block_id` (string): The block focus moved to.
+
 ### `help.all`
 
 Describe every method the server provides, including block methods.
@@ -2966,7 +2993,7 @@ Set up a new connection in one call: receive events, list sessions, and attach.
 Arguments:
 
 - `event_scope` (string, required): Which events to receive. 'session' sends every session's events except block_event, plus session_created, session_destroyed, session_moved, and tailscale_status_changed. 'all' also sends block_event and the client events, such as client_joined.
-- `preferred_session_id` (string): The session to attach to, if it exists. Otherwise the server attaches the first session. Ignored when attach_session_ids is set.
+- `preferred_session_id` (string): The session to attach to, if it exists. Otherwise the server attaches the first session it can. Ignored when attach_session_ids is set.
 - `attach_session_ids` (array of strings or null): The sessions to attach to, in order. Unknown and repeated IDs are skipped, and an empty list attaches none. Leave it out to let the server pick one.
 - `data_tickets` (array of objects or null): The kinds of block to issue data tickets for. The response has a ticket for each visible block in an attached session that matches one. At most 8 entries.
   - `creator_name` (string, required): Issue tickets for blocks whose creator_name is this, such as com.superlogical.terminal. Required.
@@ -3012,7 +3039,7 @@ Result:
   - `sessions` (array of objects or null, required): Every session on the server when this connection started receiving events.
     - `session_id` (string, required): The session's ID.
     - `label` (string, required): The session's label.
-- `selected_session` (object or null, required): The session the server chose and attached. Null if you sent attach_session_ids or there are no sessions.
+- `selected_session` (object or null, required): The session the server chose and attached. Null if you sent attach_session_ids, or if no session could be attached.
   - `session` (object, required): The session's entry from attach_all.
     - `session_id` (string, required): The session's ID.
     - `label` (string, required): The session's label.
@@ -3047,7 +3074,7 @@ Result:
           - `flavor` (string): The flavor the block was made from, such as com.superlogical.terminal.shell.
           - `host_id` (string): Identifies the machine and account the block runs as. If it equals your local server's host_id, the block sees the same files you do. Otherwise treat the block as remote.
           - `owner` (string or null): The client that owns the block. Left out when the block has no owner.
-- `attached_sessions` (array of objects or null): The sessions attached from attach_session_ids, in the order requested. Sessions that don't exist are left out.
+- `attached_sessions` (array of objects or null): The sessions attached from attach_session_ids, in the order requested. Sessions that don't exist are left out, and so may be sessions that are being destroyed.
   - `session` (object, required): The session's entry from attach_all.
     - `session_id` (string, required): The session's ID.
     - `label` (string, required): The session's label.
